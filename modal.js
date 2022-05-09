@@ -18,6 +18,7 @@ const textControl = document.querySelectorAll(".text-control");
 const locationControl = document.getElementsByName("location");
 const checkboxControl = document.getElementById("checkbox1");
 
+
 // launch and close modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalBtnClose.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -45,6 +46,7 @@ function DataErrorVisible(dataTarget, dataState){
 // validity input check
 function check(e){
   let resultChek = e.target.reportValidity();
+  if(e.target.value==''){ resultChek = false; };
   DataErrorVisible(e.target, !resultChek);
   console.log("Input valid ? "+ resultChek);
 }
@@ -81,12 +83,12 @@ function validate() {
 
   //change modal if the form is valid
   if(invalidInput==0){
+    modalvalid.style.height = modalcontent.offsetHeight + "px";
     modalcontent.style.display = "none";
-    modalvalid.style.display = "block"; 
+    modalvalid.style.display = "flex"; 
     console.log("Everyting is valid !");
   }else{
     console.log("Everyting isn't valid !");
   }
-
 }
 
