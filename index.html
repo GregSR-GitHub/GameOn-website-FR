@@ -105,7 +105,7 @@
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div class="formData">
+              <div class="formData" data-error="Vous devez choisir une option.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -168,14 +168,14 @@
                   Portland</label>
               </div>
 
-              <div class="formData">
+              <div class="formData" data-error="Vous devez vérifier que vous acceptez les termes et conditions.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  checked required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -201,6 +201,7 @@
             class="btn-submit button"
             type="submit"
             value="Fermer"
+            onclick="closeModal();"
           />
           </div>
           <!---->
