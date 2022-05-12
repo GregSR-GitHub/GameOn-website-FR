@@ -1,12 +1,3 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalcontent = document.querySelector(".modal-body");
@@ -17,6 +8,8 @@ const formData = document.querySelectorAll(".formData");
 const textControl = document.querySelectorAll(".text-control");
 const locationControl = document.getElementsByName("location");
 const checkboxControl = document.getElementById("checkbox1");
+const emailControl = document.getElementById("email");
+const dateControl = document.getElementById("birthdate");
 
 
 // launch and close modal event
@@ -38,17 +31,62 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// responsive menu
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
 // change error-data visibility
 function DataErrorVisible(dataTarget, dataState){
   dataTarget.parentElement.setAttribute('data-error-visible', dataState);
 }
 
-// validity input check
+//validity email check
+function checkMail(email){
+const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if(email.match(mailformat)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+//validity birthdate check
+function checkDate(date){
+  const dateRef = '1900-01-01';
+  if(date.replace(/-/g, '')  > dateRef.replace(/-/g, '')){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// validity test via addEventListener
 function check(e){
-  let resultChek = e.target.reportValidity();
-  if(e.target.value==''){ resultChek = false; };
-  DataErrorVisible(e.target, !resultChek);
-  console.log("Input valid ? "+ resultChek);
+  checkText(e.target);
+}
+
+// validity input check
+function checkText(testedInput){
+  let resultChek = testedInput.reportValidity();
+  if(testedInput.value==''){ 
+    resultChek = false; 
+  }
+  if((testedInput.type=='email')&&(resultChek)){
+    resultChek = checkMail(testedInput.value);
+  }
+  if((testedInput.type=='date')&&(resultChek)){
+    resultChek = checkDate(testedInput.value);
+  }
+  DataErrorVisible(testedInput, !resultChek);
+  console.log("Input("+ testedInput.id +") validity : "+ resultChek);
+  return resultChek;
 }
 
 // validity location checkbox check
@@ -67,16 +105,20 @@ function validate() {
   // verify if all texts inputs are valid
   let invalidInput = 0;
   textControl.forEach(e => {
-    if((e.value=='')||(e.reportValidity()!=true)){
+    if(!checkText(e)){
       invalidInput ++;
-      DataErrorVisible(e, true);
     }
   });
 
   // verify all 'location' checkbox
-  let validLocation = checkLocation();
-  if(validLocation!=true){
+  if(checkLocation()!=true){
     invalidInput ++;
+  }
+
+   // verify last checkbox
+  if(checkboxControl.checked!=true){
+    invalidInput ++;
+    DataErrorVisible(heckboxControl, true);
   }
 
   console.log(invalidInput + " invalid(s) input(s)");
