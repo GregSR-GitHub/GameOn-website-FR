@@ -1,7 +1,11 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
+  --font-primary-color: #fff;
   --modal-duration: 0.8s;
+  --bg-primary-color: #fff;
+  --form-error-color: #e54858;
+  --form-valid-color: #279e7a;
 }
 
 * {
@@ -37,7 +41,7 @@ img {
 
 .header-logo {
     float: left;
-    padding-left: 2vw;
+    padding-left: 25px;
 }
 
 .main-navbar {
@@ -59,13 +63,13 @@ img {
 
 .topnav a:hover {
   background-color: #ff0000;
-  color: #ffffff;
+  color: var(--font-primary-color);
   border-radius: 15px;
 }
 
 .topnav a.active {
   background-color: #ff0000;
-  color: #ffffff;
+  color: var(--font-primary-color);
   border-radius: 15px;
 }
 
@@ -76,6 +80,7 @@ img {
 @media screen and (max-width: 768px) {
 
   .topnav {
+    margin: 20px 2vw;
     overflow: visible;
     z-index: 3;
   }
@@ -88,7 +93,7 @@ img {
 
   .topnav a {
     display: none;
-    background-color: #ffffff;
+    background-color: var(--bg-primary-color);
     border-radius: 15px;
   }
 
@@ -103,7 +108,7 @@ img {
   }
 
   .topnav a:hover, .topnav a.active {
-    color: #ffffff;
+    color: var(--font-primary-color);
   }
 
   .topnav.responsive {
@@ -112,7 +117,7 @@ img {
 
   .topnav.responsive .main-navbar {
     padding: 40px 2px 2px 2px;
-    background-color: #ffffff;
+    background-color: var(--bg-primary-color);
     border-radius: 15px;
     box-shadow: 0 8px 10px 2px rgba(0, 0, 0, 0.3);
   }
@@ -133,6 +138,7 @@ img {
 
   .header-logo {
     width: 100%;
+    padding-left: 2vw;
   }
   
   .header-logo img{
@@ -140,10 +146,8 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
-   
+
   .topnav a {
     display: none;
   }
@@ -154,8 +158,8 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  padding-left: 25px;
+  padding-right: 25px;
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
@@ -167,7 +171,7 @@ main {
   display: flex;
   margin: auto;
   padding: 2em;
-  color: #fff;
+  color: var(--font-primary-color);
   padding: 0.75rem 2.5rem;
   border-radius: 1rem;
   cursor: pointer;
@@ -189,7 +193,7 @@ main {
   background: #fe142f;
   margin-top: 0.5em;
   padding: 1em;
-  color: #fff;
+  color: var(--font-primary-color);
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
@@ -212,7 +216,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--bg-primary-color);
 }
 
 .content {
@@ -225,7 +229,7 @@ main {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: var(--font-primary-color);
   padding-top: 10px;
   box-shadow: 0 8px 10px 2px rgba(0, 0, 0, 0.3);
 }
@@ -281,7 +285,7 @@ input {
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  color: var(--form-error-color);
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -295,22 +299,22 @@ input {
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border: 2px solid var(--form-error-color);
 }
 
 /*change checkbox color*/
 .formData[data-error-visible="true"] .checkbox-label .checkbox-icon {
-  border: 2px solid #e54858;
+  border: 2px solid var(--form-error-color);
 }
 
 /*change checkbox2 color*/
 .formData[data-error-visible="true"] .checkbox2-label[for="checkbox1"] {
-  color: #e54858;
+  color: var(--form-error-color);
 }
 
 /*change text-control while focus*/
 .text-control:focus {
-  border: 2px solid #279e7a;
+  border: 2px solid var(--form-valid-color);
 }
 
 .checkbox-label,
@@ -326,7 +330,7 @@ input {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid var(--form-valid-color);
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -341,7 +345,7 @@ input {
   content: "";
   width: 13px;
   height: 13px;
-  background-color: #279e7a;
+  background-color: var(--form-valid-color);
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -363,7 +367,7 @@ input {
 }
 
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
+  background: var(--form-valid-color);
 }
 
 .checkbox2-label .checkbox-icon {
@@ -378,8 +382,8 @@ input {
   border-radius: 2px;
   background: transparent;
   border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
+  border-bottom-color: var(--bg-primary-color);
+  border-left-color: var(--bg-primary-color);
   transform: rotate(-55deg);
   left: 21%;
   top: 19%;
@@ -403,7 +407,7 @@ input {
   content: " ";
   height: 33px;
   width: 3px;
-  background-color: #fff;
+  background-color: var(--bg-primary-color);
 }
 
 .close:before {
@@ -422,7 +426,7 @@ input {
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
-  color: #fff;
+  color: var(--font-primary-color);
   cursor: pointer;
   border: 0;
 }
@@ -440,7 +444,7 @@ input {
 }
 
 .select-selected {
-  background-color: #fff;
+  background-color: var(--bg-primary-color);
 }
 
 /* Style the arrow inside the select element: */
@@ -478,7 +482,7 @@ input {
 /* Style items (options): */
 .select-items {
   position: absolute;
-  background-color: #fff;
+  background-color: var(--bg-primary-color);
   top: 89%;
   left: 0;
   right: 0;
@@ -515,7 +519,7 @@ input {
   padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
-  color: #fff;
+  color: var(--font-primary-color);
   position: relative;
   text-align: left;
   min-width: 424px;
@@ -587,6 +591,12 @@ footer {
 
 @media screen and (max-width: 950px) {
 
+  main {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 1px 2vw 15px;
+  }
+
   .hero-headline {
     font-size: 4.5rem;
     font-weight: normal;
@@ -610,7 +620,6 @@ footer {
 
 @media screen and (max-width: 768px) {
 
-  
   .content {
     margin: 60px auto 0;
   }
@@ -619,6 +628,7 @@ footer {
     font-size: 16px;
     margin-bottom: 6px;
   }
+
   .text-control{
     height: 42px;
     padding: 6px;
@@ -629,37 +639,45 @@ footer {
     min-height:auto;
     box-shadow: unset;
   }
+
   .hero-content {
-    background: #fff;
+    background: var(--bg-primary-color);
     color: #000;
-    padding: 20px;
+    padding: 2vw;
     min-width: 300px;
   }
+
   .hero-content::after {
     content: unset;
   }
+
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
     font-size: 9vw;
     white-space: normal;
   }
+
   .hero-text {
     width: unset;
     font-size: 3.5vw;
     margin-top: 25px;
   }
+
   .hero-img img {
     border-radius: 10px;
     margin-top: 10px;
   }
+
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
     font-size: 0.9rem;
   }
+
   .copyrights {
     margin: 0 0 15px;
     font-size: 0.8rem;

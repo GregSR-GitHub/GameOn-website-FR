@@ -59,8 +59,8 @@ const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0
 
 //validity birthdate check
 function checkDate(date){
-  const dateRef = '1900-01-01';
-  if(date.replace(/-/g, '')  > dateRef.replace(/-/g, '')){
+  const dateRef = '19000101';
+  if(date.replace(/-/g, '')  > dateRef){
     return true;
   }else{
     return false;
@@ -118,7 +118,7 @@ function validate() {
    // verify last checkbox
   if(checkboxControl.checked!=true){
     invalidInput ++;
-    DataErrorVisible(heckboxControl, true);
+    DataErrorVisible(checkboxControl, true);
   }
 
   console.log(invalidInput + " invalid(s) input(s)");
