@@ -103,7 +103,7 @@ img {
     padding: 8px 10px;
     position: absolute;
     margin: 5px;
-    right: 20px;
+    right: 12px;
     top: 20px;
   }
 
@@ -209,13 +209,21 @@ main {
 
 .bground {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
+}
+
+.bground-color {
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
   background-color: var(--bg-primary-color);
 }
 
@@ -294,6 +302,7 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
+
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }

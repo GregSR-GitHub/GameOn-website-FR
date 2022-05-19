@@ -59,8 +59,12 @@ const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0
 
 //validity birthdate check
 function checkDate(date){
-  const dateRef = '19000101';
-  if(date.replace(/-/g, '')  > dateRef){
+  const dateToday= new Date();
+  const dateMaxRef = dateToday.getFullYear();
+  const dateMinRef = dateMaxRef - 125;
+  const dateInput = date.substr(0, 4);
+
+  if((dateInput >= dateMinRef)&&(dateInput <= dateMaxRef)){
     return true;
   }else{
     return false;
@@ -94,6 +98,7 @@ function checkLocation(){
   let locationIsChecked = false;
   locationControl.forEach(e => { if(e.checked){ locationIsChecked = true; } });
   DataErrorVisible(locationControl[0], !locationIsChecked);
+  console.log("Input(location) validity : "+ locationIsChecked);
   return locationIsChecked;
 }
 
@@ -111,12 +116,12 @@ function validate() {
   });
 
   // verify all 'location' checkbox
-  if(checkLocation()!=true){
+  if(!checkLocation()){
     invalidInput ++;
   }
 
    // verify last checkbox
-  if(checkboxControl.checked!=true){
+  if(!checkboxControl.checked){
     invalidInput ++;
     DataErrorVisible(checkboxControl, true);
   }
