@@ -10,6 +10,7 @@ const locationControl = document.getElementsByName("location");
 const checkboxControl = document.getElementById("checkbox1");
 const emailControl = document.getElementById("email");
 const dateControl = document.getElementById("birthdate");
+const quantityControl = document.getElementById("quantity");
 
 
 // launch and close modal event
@@ -20,6 +21,8 @@ modalBtnClose.forEach((btn) => btn.addEventListener("click", closeModal));
 textControl.forEach((btn) => btn.addEventListener("change", check));
 checkboxControl.addEventListener("input", check);
 locationControl.forEach((btn) => btn.addEventListener("input", checkLocation));
+dateControl.addEventListener("click", check);
+quantityControl.addEventListener("click", check);
 
 // launch modal form
 function launchModal() {
@@ -79,6 +82,7 @@ function check(e){
 // validity input check
 function checkText(testedInput){
   let resultChek = testedInput.reportValidity();
+  console.log("Test");
   if(testedInput.value==''){ 
     resultChek = false; 
   }
